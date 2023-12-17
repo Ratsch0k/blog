@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+	@apply bg-base-900;
+	@apply text-base-50;
+}
+
+h1 {
+	@apply text-4xl;
+	@apply font-semibold;
+	@apply mb-2;
+	scroll-margin-top: 4rem;
+}
+
+h2 {
+	@apply text-2xl;
+	@apply font-semibold;
+	@apply mb-1;
+	scroll-margin-top: 4rem;
+}
+
+h3 {
+	@apply text-xl;
+	@apply font-semibold;
+	@apply mb-1;
+	scroll-margin-top: 4rem;
+}
+
+p {
+	@apply mb-4;
+}
