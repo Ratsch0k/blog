@@ -24,6 +24,10 @@ Multiple [remark](https://github.com/remarkjs/remark) and [rehype](https://githu
 - [rehype-slug](https://github.com/rehypejs/rehype-slug)
 - [rehype-toc](https://github.com/JS-DevTools/rehype-toc)
 
+*Other plugins*
+- [mermaid](https://mermaid.js.org/)
+
+
 ## How To Install
 Simply run
 ```
