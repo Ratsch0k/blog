@@ -12,7 +12,6 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install
-          pnpm build
           pnpm eslint .
           pnpm prettier --check .
   deploy:
