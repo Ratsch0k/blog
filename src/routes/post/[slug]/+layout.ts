@@ -12,7 +12,7 @@ export async function load({ params }): LayoutData {
 
 		return {
 			post: page,
-			metadata,
+			metadata
 		};
 	} catch (e) {
 		throw error(404, 'Post not found');
