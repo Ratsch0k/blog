@@ -28,7 +28,7 @@
 	 * Published date parsed to an internationalized date time format.
 	 */
 	let publishedDate = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium' }).format(
-		new Date(post.metadata.publishedAt)
+		post.publishedAt
 	);
 
 	/**

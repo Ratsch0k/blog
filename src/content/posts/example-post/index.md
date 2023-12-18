@@ -1,6 +1,6 @@
 ---
 title: 'Example Post'
-publishedAt: '2023.12.16'
+publishedAt: '2023-12-16'
 tags:
   - Test
 ---
