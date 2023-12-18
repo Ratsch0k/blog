@@ -18,7 +18,8 @@
 		</div>
 
 		I'm a 25 years old IT-Security master's student at the Technical University Darmstadt. My
-		passion is to learn about and explore the worlds of <i class="highlight">cybersecurity</i> and
+		passion is to learn about and explore the worlds of
+		<i class="highlight">cybersecurity</i> and
 		<i class="highlight">software development</i>. This blog is a place for me to share my passion
 		with anyone interested. You can expect smaller posts such as challenge
 		<i class="highlight">write-ups</i>
