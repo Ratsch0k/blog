@@ -2,7 +2,13 @@
 title: 'Example Post'
 publishedAt: '2023-12-16'
 tags:
-  - Test
+  - test
+  - security
+  - write-up
+  - series
+  - development
+  - reverse-engineering
+  - guide
 ---
 
 An example blog post.

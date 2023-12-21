@@ -1,4 +1,11 @@
-export const postTags = ['write-up', 'development', 'security', 'long-term'] as const;
+export const postTags = [
+	'write-up',
+	'development',
+	'security',
+	'series',
+	'reverse-engineering',
+	'guide'
+] as const;
 export type PostTag = (typeof postTags)[number];
 
 /**
