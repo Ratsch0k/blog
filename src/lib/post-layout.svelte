@@ -9,14 +9,27 @@
 
 <script lang="ts">
 	import mermaid from 'mermaid';
+	import TagChip from './tag-chip.svelte';
+	import { mousePosition } from './mouse-position';
 	mermaid.initialize({ startOnLoad: true });
+
+	let article = null;
 
 	onMount(() => {
 		mermaid.run({ querySelector: '.mermaid' });
+		mousePosition().subscribe((pos) => {
+			if (article === null) {
+				return;
+			}
+
+			article.style.setProperty('--mouse-x', `${pos.x}px`);
+			article.style.setProperty('--mouse-y', `${pos.y}px`);
+		});
 	});
 
 	export let title;
 	export let publishedAt;
+	export let tags;
 
 	// Parse the raw publishedAt string into an internationalized date time string
 	const publishedDate = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium' }).format(
@@ -28,10 +41,17 @@
 	<title>{title}</title>
 </svelte:head>
 
-<article class="prose prose-invert">
+<article class="prose prose-invert" bind:this={article}>
 	<div class="mb-12">
 		<h1 class="text-5xl italic mb-2 text-primary font-semibold">{title}</h1>
 		<div class="w-full italic text-primary text-sm font-lightd">published on {publishedDate}</div>
+
+		<h3 class="text-primary mt-4">Tags</h3>
+		<ul class="flex flex-row flex-wrap items-center text-gray-300">
+			{#each tags as tag, i (i)}
+				<li class="p-1"><TagChip {tag} /></li>
+			{/each}
+		</ul>
 	</div>
 	<slot />
 </article>
@@ -42,8 +62,8 @@
 	}
 
 	/**
-   * Styling of the navigation toc.
-   */
+     * Styling of the navigation toc.
+     */
 
 	:global(.toc) {
 		@apply bg-base-800;
@@ -213,7 +233,8 @@
 		@apply p-2;
 		@apply w-full;
 		@apply block;
-		@apply transition-colors;
+		@apply transition-all;
+		@apply outline-transparent;
 		@apply rounded-md;
 		@apply my-1;
 	}
