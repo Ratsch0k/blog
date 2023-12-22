@@ -9,7 +9,7 @@ export const load: PageLoad = async () => {
 			const { default: page, metadata } = await resolver();
 			const slug = path.replace('../../content/posts', '/post').replace('index.md', '');
 
-			return toPost({page, metadata, path, slug})
+			return toPost({ page, metadata, path, slug });
 		})
 	);
 

@@ -1,7 +1,7 @@
 ---
 title: 'Example Post'
 publishedAt: '2023-12-16'
-description: "Example post to test some features."
+description: 'Example post to test some features.'
 tags:
   - test
   - security

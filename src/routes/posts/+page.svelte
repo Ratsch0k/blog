@@ -4,7 +4,7 @@
 	import type { PageLoadData } from './$types';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
+
 	import type { FormEventHandler } from 'svelte/elements';
 
 	export let data: PageLoadData;
@@ -14,15 +14,15 @@
 	/**
 	 * Search query for posts.
 	 */
-	let search: string | undefined = $page.url.searchParams.get("search") || undefined;
+	let search: string | undefined = $page.url.searchParams.get('search') || undefined;
 
 	/**
 	 * Text-based search query.
-	 * 
+	 *
 	 * Will not contain parts of the search that specify tags.
 	 */
 	let searchQuery: string | undefined = undefined;
-	
+
 	/**
 	 * List of tags the user searches for.
 	 */
@@ -30,9 +30,9 @@
 
 	/**
 	 * Handles user input for the search bar.
-	 * 
+	 *
 	 * Updates the url search params.
-	 * 
+	 *
 	 * @param event Input event
 	 */
 	const handleSearchInput: FormEventHandler<HTMLInputElement> = (event) => {
@@ -40,32 +40,32 @@
 		const search = event.currentTarget.value;
 
 		if (!search) {
-			console.log("Remove search")
-			query.delete("search");
+			console.log('Remove search');
+			query.delete('search');
 		} else {
-			query.set("search", search);
+			query.set('search', search);
 		}
 
-		goto(`?${query.toString()}`, {keepFocus: true});
-	}
+		goto(`?${query.toString()}`, { keepFocus: true });
+	};
 
 	/**
 	 * Update the search when the url search params changes.
-	 * 
+	 *
 	 * Used for tag links.
 	 */
 	$: (() => {
-		const querySearch = $page.url.searchParams.get("search");
+		const querySearch = $page.url.searchParams.get('search');
 
 		if (querySearch !== null && querySearch !== search) {
 			search = querySearch;
 		}
-	})()
+	})();
 
 	$: filteredPosts = (() => {
-		// Return unfiltered posts if the user doesn't search		
+		// Return unfiltered posts if the user doesn't search
 		if (!search) {
-			searchQuery = "";
+			searchQuery = '';
 			return posts;
 		}
 
@@ -77,26 +77,27 @@
 		 * Parse the search query for tags and filter out posts that don't match
 		 * the tag.
 		 */
-		if (searchQuery.startsWith("#")) {
-			const possibleTags = searchQuery.split(" ");
+		if (searchQuery.startsWith('#')) {
+			const possibleTags = searchQuery.split(' ');
 			let tags: string[] = [];
 			searchQuery = undefined;
 
 			for (let i = 0; i < possibleTags.length; i++) {
 				const possibleTag = possibleTags[i];
 
-				if (possibleTag.startsWith("#")) {
+				if (possibleTag.startsWith('#')) {
 					tags.push(possibleTag.slice(1));
 				} else {
-					searchQuery = possibleTags.slice(i).join(" ");
+					searchQuery = possibleTags.slice(i).join(' ');
 					break;
 				}
 			}
 
 			searchedTags = tags;
 
-			filteredPosts = filteredPosts
-				.filter((post) => tags.filter((tag) => (post.tags as string[]).includes(tag)).length > 0);
+			filteredPosts = filteredPosts.filter(
+				(post) => tags.filter((tag) => (post.tags as string[]).includes(tag)).length > 0
+			);
 		}
 
 		/*
@@ -113,15 +114,16 @@
 						return [2, post];
 					}
 					if (post.description.toLowerCase().includes(searchQuery)) {
-						return  [1, post];
+						return [1, post];
 					}
 
 					return [0, post];
-				}).filter(([prio, _post]) => prio > 0)
-				.sort(([prioA, _postA], [prioB, _postB]) => prioA < prioB ? -1 : 1)
+				})
+				.filter(([prio, _post]) => prio > 0)
+				.sort(([prioA, _postA], [prioB, _postB]) => (prioA < prioB ? -1 : 1))
 				.map(([_prio, post]) => post);
 		}
-		
+
 		return filteredPosts;
 	})();
 </script>
@@ -133,7 +135,14 @@
 		<span class="text-sm text-base-100">
 			Search for posts. Use # to search for posts with specific tags.
 		</span>
-		<input on:input={handleSearchInput} type="search" bind:value={search} class="w-full p-2 rounded-lg bg-base-700 border border-base-600 focus-visible:outline focus-visible:outline-base-400" placeholder="Search" id="search-posts"/>
+		<input
+			on:input={handleSearchInput}
+			type="search"
+			bind:value={search}
+			class="w-full p-2 rounded-lg bg-base-700 border border-base-600 focus-visible:outline focus-visible:outline-base-400"
+			placeholder="Search"
+			id="search-posts"
+		/>
 	</div>
 
 	<ul class="flex flex-col space-y-4 justify-stretch">

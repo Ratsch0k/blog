@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Post, PostTag } from '$lib/post';
+	import type { Post } from '$lib/post';
 	import { onMount } from 'svelte';
 
 	/**
@@ -9,14 +9,14 @@
 
 	/**
 	 * Text to highlight.
-	 * 
+	 *
 	 * Will highlight text in the description and title that matches this.
 	 */
 	export let highlight: string | undefined = undefined;
 
 	/**
 	 * Tags to highlight.
-	 * 
+	 *
 	 * Will highlight these tags.
 	 */
 	export let highlightTags: string[] = [];
@@ -114,14 +114,14 @@
 		highlight?: {
 			position: number;
 			length: number;
-		}
+		};
 	}
 
 	/**
 	 * Get the title and check if there is any section to highlight
 	 */
 	$: title = (() => {
-		const title: HighlightedText = {text: post.title};
+		const title: HighlightedText = { text: post.title };
 		if (!highlight) return title;
 
 		const index = post.title.toLowerCase().indexOf(highlight.toLowerCase());
@@ -130,9 +130,9 @@
 
 		title.highlight = {
 			position: index,
-			length: highlight.length,
-		}
-		
+			length: highlight.length
+		};
+
 		return title;
 	})();
 
@@ -140,7 +140,7 @@
 	 * Get the description and check if there is any section to highlight
 	 */
 	$: description = (() => {
-		const description: HighlightedText = {text: post.description};
+		const description: HighlightedText = { text: post.description };
 		if (!highlight) return description;
 
 		const index = post.description.toLowerCase().indexOf(highlight.toLowerCase());
@@ -149,9 +149,9 @@
 
 		description.highlight = {
 			position: index,
-			length: highlight.length,
-		}
-		
+			length: highlight.length
+		};
+
 		return description;
 	})();
 
@@ -171,9 +171,14 @@
 	>
 		<span class="font-semibold italic text-2xl">
 			{#if !title.highlight}
-			{title.text}
+				{title.text}
 			{:else}
-				{title.text.slice(0, title.highlight.position)}<mark>{title.text.slice(title.highlight.position, title.highlight.position + title.highlight.length)}</mark>{title.text.slice(title.highlight.position + title.highlight.length)}
+				{title.text.slice(0, title.highlight.position)}<mark
+					>{title.text.slice(
+						title.highlight.position,
+						title.highlight.position + title.highlight.length
+					)}</mark
+				>{title.text.slice(title.highlight.position + title.highlight.length)}
 			{/if}
 		</span>
 		<span class="italic font-extralight text-base-50 mb-2">on {publishedDate}</span>
@@ -181,11 +186,11 @@
 		<ul class="flex flex-row flex-wrap">
 			{#each tags as tag, i (i)}
 				<li class="italic text-sm text-base-100 pr-2 hover:underline font-semibold">
-					<a href={`/posts?search=${"%23" + tag}`}>
+					<a href={`/posts?search=${'%23' + tag}`}>
 						{#if highlightTags.includes(tag)}
-						<mark>
-							#{tag}
-						</mark>
+							<mark>
+								#{tag}
+							</mark>
 						{:else}
 							#{tag}
 						{/if}
@@ -196,9 +201,14 @@
 
 		<span class="text-base-100 mt-2">
 			{#if !description.highlight}
-			{description.text}
+				{description.text}
 			{:else}
-				{description.text.slice(0, description.highlight.position)}<mark>{description.text.slice(description.highlight.position, description.highlight.position + description.highlight.length)}</mark>{description.text.slice(description.highlight.position + description.highlight.length)}
+				{description.text.slice(0, description.highlight.position)}<mark
+					>{description.text.slice(
+						description.highlight.position,
+						description.highlight.position + description.highlight.length
+					)}</mark
+				>{description.text.slice(description.highlight.position + description.highlight.length)}
 			{/if}
 		</span>
 	</div>
