@@ -207,7 +207,6 @@
 	 */
 	const clearSearch = () => {
 		search = '';
-		showTags = false;
 
 		const query = $page.url.searchParams;
 		query.delete('search');
@@ -222,7 +221,6 @@
 		if (focusedTag) {
 			const newSearch =
 				search.slice(0, focusedTag.start) + '#' + tag + search.slice(focusedTag.end);
-			showTags = false;
 			updateSearchQuery(newSearch);
 			input.focus();
 		}
