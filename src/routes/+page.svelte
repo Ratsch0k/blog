@@ -26,7 +26,7 @@
 		to serieses of posts about longer <i class="highlight">personal projects</i>.
 	</div>
 
-	<div class="max-w-2xl m-auto px-4">
+	<div class="max-w-3xl m-auto px-4">
 		<h3 class="text-3xl italic text-primary font-semibold mb-8">Read my top posts</h3>
 		<div class="w-full flex flex-col items-stretch">
 			<ul class="flex flex-row space-x-6 flex-wrap items-stretch mb-4">

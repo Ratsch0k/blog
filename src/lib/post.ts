@@ -16,28 +16,38 @@ export type PostTag = (typeof postTags)[number];
  */
 export interface Post {
 	/**
-	 * The rendered page.
+	 * The rendered page
 	 */
 	page: unknown;
 	/**
-	 * Relative path where the post markdown files are located.
+	 * Relative path where the post markdown files are located
 	 */
 	path: string;
 	/**
-	 * The slug that can be used to navigate to the page.
+	 * The slug that can be used to navigate to the page
 	 */
 	slug: string;
 	/**
-	 * Raw metadata object.
+	 * Raw metadata object
 	 */
 	metadata: Record<string, unknown>;
 	/**
-	 * Date when the post was published.
+	 * Date when the post was published
 	 */
 	publishedAt: Date | undefined;
 
 	/**
-	 * List of tags.
+	 * Short description of the blog post
+	 */
+	description: string;
+
+	/**
+	 * The title
+	 */
+	title: string;
+
+	/**
+	 * List of tags
 	 */
 	tags: PostTag[];
 }
@@ -79,6 +89,8 @@ export function toPost(rawPost: RawPost): Post {
 	return {
 		tags: (rawPost.metadata.tags as unknown as PostTag[]) ?? [],
 		publishedAt,
+		description: rawPost.metadata.description as string,
+		title: rawPost.metadata.title as string,
 		...rawPost
 	} satisfies Post;
 }

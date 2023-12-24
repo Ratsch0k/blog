@@ -123,6 +123,8 @@
 	})();
 </script>
 
-<SpotlightCard {...tagColor}>
-	<i class="text-sm font-semibold">#{tag}</i>
-</SpotlightCard>
+<a class="text-base-50 tag" href={`/posts?search=%23${tag}`}>
+	<SpotlightCard {...tagColor}>
+		<i class="text-sm font-semibold">#{tag}</i>
+	</SpotlightCard>
+</a>
