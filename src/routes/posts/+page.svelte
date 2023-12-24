@@ -9,6 +9,7 @@
 	import Search from '$lib/icon/search.svelte';
 	import { postTags } from '$lib/post';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	export let data: PageLoadData;
 
@@ -30,7 +31,7 @@
 	/**
 	 * Search query for posts.
 	 */
-	let search: string = $page.url.searchParams.get('search') || '';
+	let search: string;
 
 	/**
 	 * Text-based search query.
@@ -77,6 +78,8 @@
 	 * Sets up a cick aways listener for the show tags dropdown
 	 */
 	onMount(() => {
+		search = $page.url.searchParams.get('search') || '';
+
 		const onClickHandler = (event: MouseEvent) => {
 			if (
 				!searchContainer.contains(event.currentTarget as Node | null) &&
@@ -232,6 +235,8 @@
 	 * Used for tag links.
 	 */
 	$: (() => {
+		if (!browser) return;
+
 		const querySearch = $page.url.searchParams.get('search');
 
 		if (querySearch !== null && querySearch !== search) {
