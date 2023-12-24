@@ -67,32 +67,30 @@
 	/**
 	 * The currently focused tag.
 	 * If no tag is in focus, this variable will be null.
-	 * 
+	 *
 	 * Focused tag means that the user is set the caret position in the search bar to
 	 * be in or at tag.
 	 */
 	let focusedTag: TagFocus | null = null;
 
 	/**
-	 * Whether to show the tag selection.
-	 */
-	let showTags = false;
-
-	/**
 	 * Sets up a cick aways listener for the show tags dropdown
 	 */
 	onMount(() => {
 		const onClickHandler = (event: MouseEvent) => {
-			if (!searchContainer.contains(event.currentTarget as Node | null) && !event.defaultPrevented) {
+			if (
+				!searchContainer.contains(event.currentTarget as Node | null) &&
+				!event.defaultPrevented
+			) {
 				focusedTag = null;
 			}
 		};
 
-		document.addEventListener("click", onClickHandler);
+		document.addEventListener('click', onClickHandler);
 
 		return () => {
-			document.removeEventListener("click", onClickHandler);
-		}
+			document.removeEventListener('click', onClickHandler);
+		};
 	});
 
 	/**
@@ -107,11 +105,11 @@
 			query.delete('search');
 		} else {
 			query.set('search', newSearch);
-		} 
+		}
 
 		search = newSearch;
 		goto(`?${query.toString()}`, { keepFocus: true });
-	}
+	};
 
 	/**
 	 * Check if the given caret position is within a tag.
@@ -146,7 +144,7 @@
 		if (start === -1 || !isCaretInTag) {
 			return null;
 		}
- 
+
 		let end = search.length;
 		for (let currentLookPos = caretPosition; currentLookPos < search.length; currentLookPos++) {
 			const currentChar = search.at(currentLookPos);
@@ -160,8 +158,8 @@
 		return {
 			start,
 			end,
-			tag: search.slice(start, start + end),
-		}
+			tag: search.slice(start, start + end)
+		};
 	};
 
 	/**
@@ -179,12 +177,12 @@
 
 		/**
 		 * This delay ensuer that the typed character is already set in the search variable..
-		 * 
+		 *
 		 */
 		setTimeout(() => {
 			focusedTag = checkIfCaretInTag(currentCursorPos);
 		}, 0);
-	}
+	};
 
 	/**
 	 * Handles user input for the search bar.
@@ -196,11 +194,11 @@
 	const handleSearchInput: FormEventHandler<HTMLInputElement> = (event) => {
 		const newSearch = event.currentTarget.value;
 
-		updateSearchQuery(newSearch)
+		updateSearchQuery(newSearch);
 	};
 
 	const handleInputClick: MouseEventHandler<HTMLInputElement> = (event) => {
-		event.preventDefault()
+		event.preventDefault();
 		focusedTag = checkIfCaretInTag(event.currentTarget.selectionStart || 0);
 	};
 
@@ -213,8 +211,8 @@
 
 		const query = $page.url.searchParams;
 		query.delete('search');
-		goto(`?${query.toString()}`)
-	}
+		goto(`?${query.toString()}`);
+	};
 
 	/**
 	 * Handles when the user clicks on a tag in the show tags dropdown.
@@ -222,12 +220,13 @@
 	 */
 	const handleSelectTag = (tag: PostTag) => {
 		if (focusedTag) {
-			const newSearch = search.slice(0, focusedTag.start) + "#" + tag + search.slice(focusedTag.end);
+			const newSearch =
+				search.slice(0, focusedTag.start) + '#' + tag + search.slice(focusedTag.end);
 			showTags = false;
 			updateSearchQuery(newSearch);
 			input.focus();
 		}
-	}
+	};
 
 	/**
 	 * Update the search when the url search params changes.
@@ -314,10 +313,14 @@
 
 	<div class="mb-8">
 		<span class="text-sm text-base-100 mb-0.5">
-			Search for specific posts. You can also search for posts with a specific tag like so: <code>#tag1 query</code>
+			Search for specific posts. You can also search for posts with a specific tag like so: <code
+				>#tag1 query</code
+			>
 		</span>
 		<div bind:this={searchContainer}>
-			<div class="w-full p-2 rounded-lg bg-base-700 border border-base-600 focus-within:outline focus-within:outline-base-400 flex flex-row items-center space-x-2">
+			<div
+				class="w-full p-2 rounded-lg bg-base-700 border border-base-600 focus-within:outline focus-within:outline-base-400 flex flex-row items-center space-x-2"
+			>
 				<span class="text-base-100">
 					<Search />
 				</span>
@@ -332,7 +335,7 @@
 					placeholder="Search"
 					id="search-posts"
 				/>
-				<button 
+				<button
 					class="hover:bg-base-600 p-1 rounded-lg text-base-100"
 					on:click={clearSearch}
 					aria-label="Clears the search bar"
@@ -340,11 +343,17 @@
 					<Clear />
 				</button>
 			</div>
-			<div class=" bg-base-600 mt-2 rounded-lg border border-base-500 absolute z-20" class:hidden={!focusedTag}>
+			<div
+				class=" bg-base-600 mt-2 rounded-lg border border-base-500 absolute z-20"
+				class:hidden={!focusedTag}
+			>
 				<ul class="flex flex-col py-2">
 					<i class="font-semibold text-sm px-2 text-base-100">Available Tags</i>
 					{#each postTags as tag, i (i)}
-						<button on:click={() => handleSelectTag(tag)} class="p-1 mx-1 text-left rounded-md hover:bg-base-500 cursor-pointer">{tag}</button>
+						<button
+							on:click={() => handleSelectTag(tag)}
+							class="p-1 mx-1 text-left rounded-md hover:bg-base-500 cursor-pointer">{tag}</button
+						>
 					{/each}
 				</ul>
 			</div>
@@ -353,15 +362,16 @@
 
 	<ul class="flex flex-col space-y-4 justify-stretch">
 		{#if filteredPosts.length <= 0}
-			<i class=" text-base-100 font-semibold text-lg">Sorry, I don't have a post that matches your query...</i>
+			<i class=" text-base-100 font-semibold text-lg"
+				>Sorry, I don't have a post that matches your query...</i
+			>
 		{:else}
-		{#each filteredPosts as post, i (i)}
-			<PostCard {post} highlight={searchQuery} highlightTags={searchedTags} />
-		{/each}
+			{#each filteredPosts as post, i (i)}
+				<PostCard {post} highlight={searchQuery} highlightTags={searchedTags} />
+			{/each}
 		{/if}
 	</ul>
 </main>
-
 
 <style>
 	.hidden {
