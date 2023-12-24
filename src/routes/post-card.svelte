@@ -237,9 +237,4 @@
 		@apply bg-primary;
 		@apply rounded-sm;
 	}
-
-	.highlight {
-		@apply bg-primary;
-		@apply rounded-sm;
-	}
 </style>
