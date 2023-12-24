@@ -44,7 +44,7 @@
 <article class="prose prose-invert" bind:this={article}>
 	<div class="mb-12">
 		<h1 class="text-5xl italic mb-2 text-primary font-semibold">{title}</h1>
-		<div class="w-full italic text-primary text-sm font-lightd">published on {publishedDate}</div>
+		<div class="w-full italic text-primary font-lightd">published on {publishedDate}</div>
 
 		<h3 class="text-primary mt-4">Tags</h3>
 		<ul class="flex flex-row flex-wrap items-center text-gray-300">
@@ -267,12 +267,12 @@
    * Is constraint to links under article to avoid
    * styling the links in the toc.
    */
-	:global(article a) {
+	:global(article a:not(.tag)) {
 		@apply text-primary;
 		@apply italic;
 	}
 
-	:global(article a:hover) {
+	:global(article a:not(.tag):hover) {
 		@apply underline;
 		@apply text-secondary;
 	}
