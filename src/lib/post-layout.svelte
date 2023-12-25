@@ -3,8 +3,9 @@
 	// This module script sets up custom components which overwrite elements used in the rendered page.
 	// See: https://mdsvex.com/docs#custom-components
 	import section from './section.svelte';
+	import img from './img.svelte';
 
-	export { section };
+	export { section, img };
 </script>
 
 <script lang="ts">
