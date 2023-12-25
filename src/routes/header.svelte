@@ -10,9 +10,7 @@
 			<span class="text-base-100">
 				<SKLogo size={38} />
 			</span>
-			<span>
-				Simon Kurz
-			</span>
+			<span> Simon Kurz </span>
 		</a>
 		<div class="flex flex-row float-right space-x-2">
 			<a href="https://de.linkedin.com/in/simon-kurz-888304142" target="_blank" rel="noreferrer"
