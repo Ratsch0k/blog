@@ -4,7 +4,7 @@
 	import SKLogo from '$lib/icon/sk-logo.svelte';
 </script>
 
-<div class="w-full p-1 bg-base-900/20 backdrop-blur-md text-primary">
+<div class="w-full p-2 bg-base-900/20 backdrop-blur-md text-primary">
 	<span class="text-xl font-bold flex flex-row items-center justify-between">
 		<a class="hover:no-underline flex flex-row items-center space-x-1" href="/">
 			<span class="text-base-100">
