@@ -283,5 +283,4 @@
 		@apply ml-6;
 		list-style: disc;
 	}
-
 </style>
