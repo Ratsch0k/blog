@@ -48,7 +48,7 @@
 		<div class="w-full italic text-primary font-lightd">published on {publishedDate}</div>
 
 		<h3 class="text-primary mt-4">Tags</h3>
-		<ul class="flex flex-row flex-wrap items-center text-gray-300 list-none">
+		<ul class="flex flex-row flex-wrap items-center text-gray-300 list-none m-0">
 			{#each tags as tag, i (i)}
 				<li class="p-1"><TagChip {tag} /></li>
 			{/each}
