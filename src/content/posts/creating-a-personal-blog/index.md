@@ -23,7 +23,6 @@ My main requirement for this project is that I want to write posts in Markdown a
 This makes writing posts easy and doesn't require a complex and resource-heavy server.
 
 My choice of Javascript framework is [SvelteKit](https://kit.svelte.dev/) with [Typescript](https://www.typescriptlang.org/).
-I always wanted to use [Svelte](https://svelte.dev/) to build the website.
 In the past, I usually used [React](https://react.dev/) and was happy with it.
 However, since discovering Svelte, I have always wanted to try it and thought that this would be the perfect opportunity.
 _Typescript_ is also a must.
@@ -44,7 +43,7 @@ A nice implementation of this type of table of contents is used by the _MDN Web 
 I want to integrate a similar table of contents.
 However, instead of highlighting only one section, which can become a little bit confusing and tends to skip small sections, my implementation should highlight every visible section.
 
-[Mermaid](https://mermaid.js.org/) is a brilliant Javascript library that adds beautiful diagrams to webpages using a simple syntax.
+[Mermaid](https://mermaid.js.org/) is a brilliant Javascript library that lets you add beautiful diagrams to webpages using a simple syntax.
 I often use it to create flow or sequence diagrams to visualize client-server communication or component relationships.
 I want to integrate Mermaid into posts so that you can write the diagram code in a Markdown code block, which is then rendered as a diagram on the webpage.
 
@@ -78,9 +77,7 @@ The basic idea is to setup a SvelteKit project that builds static HTML files fro
 In this section, I will not go into much detail about most topics and focus more on how I build up the project.
 In the section [Implementing the requirements](#implementing-the-requirements), I will go into more detail about how I implemented some of the requirements.
 
-## Project Setup
-
-### Website Structure
+## Website Structure
 
 First, let's discuss what the website should look like.
 For complex websites, I would usually use tools such as [Figma](https://www.figma.com/) or its open-source alternative, [PenPot](https://penpot.app/), which I can recommend, to draft and design.
@@ -97,6 +94,8 @@ This will often just be the rendered posts with some added styling.
 
 In my blog, the home page should be at the root URL `/`, the post overview at `/posts`, and each post should be under the dynamic URL `/post/[title]` plus their title.
 For example, a post called _Creating a Personal Blog_ should be under `/post/creating-a-personal-blog`.
+
+## Project Setup
 
 ### Initial Setup
 
@@ -335,7 +334,7 @@ Next, I have to add some Javascript to each section to keep track of its visibil
 Here, the first problem is that remark-sectionize uses a simple `section` HTML element to wrap each section.
 We have to replace this section element with a custom Svelte component.
 However, remark-sectionize doesn't offer this functionality.
-Fortunately, we can use mdsvex's [Layout]https://mdsvex.com/docs#layouts and [Custom Component](https://mdsvex.com/docs#custom-components) features.
+Fortunately, we can use mdsvex's [Layout](https://mdsvex.com/docs#layouts) and [Custom Component](https://mdsvex.com/docs#custom-components) features.
 The layouts feature allows us to specify a Svelte file that is used by mdsvex to wrap the converted post.
 If we export a Svelte component in the layout component with the name of an HTML element (such as `section`), our exported component will replace the HTML element in the rendered.
 
