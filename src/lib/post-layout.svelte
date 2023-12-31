@@ -48,7 +48,7 @@
 		<div class="w-full italic text-primary font-lightd">published on {publishedDate}</div>
 
 		<h3 class="text-primary mt-4">Tags</h3>
-		<ul class="flex flex-row flex-wrap items-center text-gray-300">
+		<ul class="flex flex-row flex-wrap items-center text-gray-300 list-none m-0">
 			{#each tags as tag, i (i)}
 				<li class="p-1"><TagChip {tag} /></li>
 			{/each}
@@ -276,5 +276,11 @@
 	:global(article a:not(.tag):hover) {
 		@apply underline;
 		@apply text-secondary;
+	}
+
+	/* Styling of lists */
+	:global(article ul) {
+		@apply ml-6;
+		list-style: disc;
 	}
 </style>
