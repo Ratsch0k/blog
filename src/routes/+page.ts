@@ -4,7 +4,7 @@ import type { PageLoad } from './types';
 /**
  * List of top posts.
  */
-const TOP_POSTS = ['example-post'];
+const TOP_POSTS = ['creating-a-personal-blog'];
 
 /**
  * Loads the list of top posts.
