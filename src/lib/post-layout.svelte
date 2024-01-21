@@ -8,7 +8,7 @@
 	export { section, img };
 </script>
 
-<script lang="ts">
+<script>
 	import mermaid from 'mermaid';
 	import TagChip from './tag-chip.svelte';
 	import { mousePosition } from './mouse-position';
@@ -230,11 +230,14 @@
 		@apply bg-base-700;
 	}
 
+	:global(.toc-link:has(~ ol .toc-link-visible)) {
+		@apply bg-base-700;
+	}
+
 	:global(.toc-link) {
 		@apply p-2;
 		@apply w-full;
 		@apply block;
-		@apply transition-all;
 		@apply outline-transparent;
 		@apply rounded-md;
 		@apply my-1;

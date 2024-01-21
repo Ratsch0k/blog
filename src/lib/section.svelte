@@ -13,7 +13,7 @@
 	 * This is most likely not the final value and further experiments are required
 	 * to determine the optimal value.
 	 */
-	const VISIBILITY_THRESHOLD = 0.0;
+	const VISIBILITY_THRESHOLD = 0.2;
 
 	/**
 	 * Whether or not the section is visible.
