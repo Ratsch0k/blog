@@ -23,7 +23,7 @@
 		<i class="highlight">software development</i>. This blog is a place for me to share my passion
 		with anyone interested. You can expect smaller posts such as challenge
 		<i class="highlight">write-ups</i>
-		to serieses of posts about longer <i class="highlight">personal projects</i>.
+		to series of posts about longer <i class="highlight">personal projects</i>.
 	</div>
 
 	<div class="max-w-3xl m-auto">
