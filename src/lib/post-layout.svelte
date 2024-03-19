@@ -286,4 +286,78 @@
 		@apply ml-6;
 		list-style: disc;
 	}
+
+
+	/* Styling of collapsable details */
+	:global(details) {
+		@apply px-2;
+		@apply py-2;
+		@apply border;
+		@apply border-base-600;
+		@apply bg-base-700;
+		@apply rounded-xl;
+		@apply my-4;
+	}
+
+	:global(summary) {
+		@apply cursor-pointer;
+		@apply text-base-300;
+		@apply font-bold;
+	}
+
+	/* Styling of tables */
+	:global(table) {
+		border-collapse: separate;
+		border-spacing: 0px;
+		@apply w-full;
+		@apply my-4;
+	}
+
+	:global(td, tr) {
+		@apply p-1.5;
+	}
+
+	:global(td) {
+		@apply border-b;
+		@apply border-base-600;
+		@apply border-r;
+	}
+
+	:global(tr td:first-child) {
+		@apply border-l;
+	}
+
+	:global(thead > tr th) {
+		@apply bg-base-700;
+	}
+
+
+	:global(thead > tr th:first-child) {
+		@apply rounded-tl-lg;
+	}
+
+	:global(thead > tr th:last-child) {
+		@apply rounded-tr-lg;
+	}
+
+	:global(tbody > tr:last-child td:first-child) {
+		@apply rounded-bl-lg;
+	}
+
+	:global(tbody > tr:last-child td:last-child) {
+		@apply rounded-br-lg;
+	}
+
+	:global(th) {
+		@apply py-2;
+		@apply text-base-200;
+		@apply border-r;
+		@apply border-b;
+		@apply border-t;
+		@apply border-base-500;
+	}
+
+	:global(tr th:first-child) {
+		@apply border-l;
+	}
 </style>
