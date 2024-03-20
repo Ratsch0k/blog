@@ -8,6 +8,7 @@ import remarkSectionize from 'remark-sectionize';
 import remarkGfm from 'remark-gfm';
 import remarkEmoji from 'remark-emoji';
 import rehypeExternalLinks from 'rehype-external-links';
+import remarkFlexibleCodeTitles from 'remark-flexible-code-titles';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -19,7 +20,7 @@ const config = {
 		mdsvex({
 			extensions: ['.md', '.svx'],
 			layout: './src/lib/post-layout.svelte',
-			remarkPlugins: [remarkSectionize, remarkGfm, remarkEmoji],
+			remarkPlugins: [remarkSectionize, remarkGfm, remarkEmoji, remarkFlexibleCodeTitles],
 			rehypePlugins: [
 				[rehypeExternalLinks, { rel: 'noreferrer' }],
 				rehypeSlug,

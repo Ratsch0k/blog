@@ -88,6 +88,14 @@
 			borderColorHover: '#473515',
 			spotColor: '#ffaf1a',
 			spotColorHover: '#ffcd70'
+		},
+		hackthebox: {
+			bgColor: '#1a200f;',
+			bgColorHover: '#384422',
+			borderColor: '#384422',
+			borderColorHover: '#5c801c',
+			spotColor: '#9fef00',
+			spotColorHover: '#a5ff00'
 		}
 	};
 

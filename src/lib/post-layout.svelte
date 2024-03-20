@@ -1,5 +1,4 @@
 <script context="module">
-	import { onMount } from 'svelte';
 	// This module script sets up custom components which overwrite elements used in the rendered page.
 	// See: https://mdsvex.com/docs#custom-components
 	import section from './section.svelte';
@@ -12,6 +11,7 @@
 	import mermaid from 'mermaid';
 	import TagChip from './tag-chip.svelte';
 	import { mousePosition } from './mouse-position';
+	import { onMount } from 'svelte';
 	mermaid.initialize({ startOnLoad: true });
 
 	let article = null;
@@ -26,6 +26,59 @@
 			article.style.setProperty('--mouse-x', `${pos.x}px`);
 			article.style.setProperty('--mouse-y', `${pos.y}px`);
 		});
+	});
+	onMount(() => {
+		const codeBlocks = document.querySelectorAll('div[class="remark-code-container"]');
+
+		for (const codeBlock of codeBlocks) {
+			const codeContainer = codeBlock.querySelector('pre');
+			let language = 'unknown';
+			if (codeContainer) {
+				language = codeContainer.className.replace('language-', '');
+			}
+
+			const languageElement = document.createElement('div');
+			languageElement.className = 'remark-code-language';
+			languageElement.innerText = language;
+
+			const actionElement = document.createElement('div');
+			actionElement.className = 'remark-code-action';
+
+			const code = codeContainer?.innerText;
+			const copyElement = document.createElement('button');
+			copyElement.className = 'remark-code-copy';
+			copyElement.innerHTML =
+				'<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="margin-top:-4px;height:20px;width:20px;display:inline" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg> ';
+			const copyLabel = document.createElement('span');
+			copyLabel.innerText = 'Copy';
+			copyElement.appendChild(copyLabel);
+
+			copyElement.addEventListener('click', () => {
+				if (code) {
+					navigator.clipboard.writeText(code);
+					copyLabel.innerText = 'Copied';
+
+					setTimeout(() => {
+						copyLabel.innerText = 'Copy';
+					}, 5000);
+				}
+			});
+
+			actionElement.appendChild(copyElement);
+			if (language !== 'undefined') {
+				actionElement.appendChild(languageElement);
+			}
+
+			if (codeBlock.firstChild.classList.contains('remark-code-title')) {
+				const title = codeBlock.firstChild;
+
+				title?.appendChild(actionElement);
+			} else {
+				let codeContainerWrapper = codeContainer?.parentElement;
+
+				codeContainerWrapper?.prepend(actionElement);
+			}
+		}
 	});
 
 	export let title;
@@ -285,5 +338,131 @@
 	:global(article ul) {
 		@apply ml-6;
 		list-style: disc;
+	}
+
+	/* Styling of collapsable details */
+	:global(details) {
+		@apply px-2;
+		@apply py-2;
+		@apply border;
+		@apply border-base-600;
+		@apply bg-base-700;
+		@apply rounded-xl;
+		@apply my-4;
+	}
+
+	:global(summary) {
+		@apply cursor-pointer;
+		@apply text-base-300;
+		@apply font-bold;
+	}
+
+	/* Styling of tables */
+	:global(table) {
+		border-collapse: separate;
+		border-spacing: 0px;
+		@apply w-full;
+		@apply my-4;
+	}
+
+	:global(td, tr) {
+		@apply p-1.5;
+	}
+
+	:global(td) {
+		@apply border-b;
+		@apply border-base-600;
+		@apply border-r;
+	}
+
+	:global(tr td:first-child) {
+		@apply border-l;
+	}
+
+	:global(thead > tr th) {
+		@apply bg-base-700;
+	}
+
+	:global(thead > tr th:first-child) {
+		@apply rounded-tl-lg;
+	}
+
+	:global(thead > tr th:last-child) {
+		@apply rounded-tr-lg;
+	}
+
+	:global(tbody > tr:last-child td:first-child) {
+		@apply rounded-bl-lg;
+	}
+
+	:global(tbody > tr:last-child td:last-child) {
+		@apply rounded-br-lg;
+	}
+
+	:global(th) {
+		@apply py-2;
+		@apply text-base-200;
+		@apply border-r;
+		@apply border-b;
+		@apply border-t;
+		@apply border-base-500;
+	}
+
+	:global(tr th:first-child) {
+		@apply border-l;
+	}
+
+	:global(.remark-code-container) {
+		position: relative;
+		display: flex;
+		min-height: 100px;
+		align-items: center;
+		@apply my-2;
+	}
+
+	:global(.remark-code-container .remark-code-action) {
+		position: absolute;
+		@apply top-2;
+		@apply right-2;
+		display: flex;
+		margin-right: -3px;
+		justify-items: center;
+		margin-top: -3px;
+		@apply font-semibold;
+		@apply text-base-100;
+	}
+
+	:global(.remark-code-copy) {
+		@apply bg-base-700;
+		@apply border;
+		@apply border-base-600;
+		@apply rounded-md;
+		@apply p-0.5;
+		@apply px-3;
+	}
+
+	:global(.remark-code-copy:hover) {
+		@apply bg-base-600;
+	}
+
+	:global(.remark-code-language) {
+		@apply ml-2;
+		@apply bg-base-700;
+		@apply border;
+		@apply border-base-600;
+		@apply rounded-md;
+		@apply font-semibold;
+		@apply italic;
+	}
+
+	:global(.remark-code-container > .remark-code-language) {
+		position: absolute;
+		@apply p-1;
+		@apply px-3;
+	}
+
+	:global(.remark-code-container .remark-code-language) {
+		@apply p-0.5;
+		@apply px-3;
 	}
 </style>
