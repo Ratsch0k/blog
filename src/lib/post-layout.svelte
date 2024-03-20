@@ -418,7 +418,7 @@
 		@apply my-2;
 	}
 
-	:global(pre[class*="language-"]) {
+	:global(pre[class*='language-']) {
 		min-height: 80px;
 		display: flex;
 		align-items: center;
