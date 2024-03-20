@@ -21,14 +21,13 @@ Discovering services with `nmap`.
 $ sudo nmap -p- -oA scans/all-ports-tcp -iL hosts -sS -T3 --min-rate 1000
 ```
 
-Also scan _UDP_.
-But limit to top 1000 ports.
+Also, scan _UDP_ ports, but limit it to the top 1000 ports.
 
 ```bash
 $ sudo nmap -iL hosts -sU --top-ports 1000 -oA scans/top-1000-udp -T3 --min-rate 1000
 ```
 
-Nmap scan discovered the following `TCP` services:
+The Nmap scan discovered the following `TCP` services:
 
 - 22
 - 80
@@ -41,17 +40,6 @@ Nmap scan discovered the following `TCP` services:
 - 61616
 
 The _UDP_ scan could not identify any open ports.
-Nmap result was
-
-```
-PORT      STATE  SERVICE
-1485/udp  closed lansource
-4008/udp  closed netcheque
-5555/udp  closed rplay
-18373/udp closed unknown
-21405/udp closed unknown
-57958/udp closed unknown
-```
 
 ## Service Information Gathering
 
@@ -137,7 +125,7 @@ PORT      STATE SERVICE    VERSION
 
 </details>
 
-Following table lists all ports and their identified listening services.
+The following table lists all ports and their identified listening services.
 
 | Port  | Service                                                      | Info                                                                          |
 | ----- | ------------------------------------------------------------ | ----------------------------------------------------------------------------- |
@@ -157,9 +145,8 @@ Lots and lots of HTTP servers running that, based on `nmaps` result, reveal file
 
 ## HTTP (80/TCP)
 
-Running http server on port 80, but it requires basic-auth authentication.
-
-As a first try I entered the default credentials `admin:admin` and it worked.
+An HTTP server is running on port 80, but it requires basic-auth authentication.
+As a first try, I entered the default credentials `admin:admin` and it worked.
 **It's an ActiveMq admin panel.**
 
 ![Screenshot of the ActiveMq admin panel](./activemq-admin.webp)
@@ -173,13 +160,11 @@ A quick search for ActiveMQ version 5.15.15 reveals that it is vulnerable to a p
 ## ActiveMq RCE
 
 As explained previously, the used version of ActiveMQ is affected by an [RCE vulnerability](https://www.rapid7.com/blog/post/2023/11/01/etr-suspected-exploitation-of-apache-activemq-cve-2023-46604/).
-I found the following POC: https://github.com/X1r0z/ActiveMQ-RCE/blob/main/README-en.md
-
+I found the following POC: https://github.com/X1r0z/ActiveMQ-RCE/blob/main/README-en.md.
 Before we can use the POC we must first modify the payload.
-Let's let it start a reverse shell.
 Looking at the POC, we must modify the file `poc.xml`
 
-Originally it contains the following payload:
+Originally, it contains the following payload:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -202,10 +187,9 @@ Originally it contains the following payload:
     </beans>
 ```
 
-Before actually setting up the reverse shell, let's first test if we actually receive a callback.
+Before we actually set up the reverse shell, let's first test if we actually receive a callback.
 
-For this, we'll setup a small http server and see if it is pinged.
-Setup a http server on your local device (for example with python http.server) to detect any incoming request
+For this, we'll setup a small HTTP server and see if it gets pinged.
 
 ```bash
 python -m http.server
@@ -328,7 +312,7 @@ I copied the default config (at `/etc/nginx/nginx.conf`) to `/tmp/nginx.conf` an
   # Truncated before brevity [...]
 ```
 
-This configuration will start nginx with the root user and creates a server listening on port 4444 with the root set to the root path.
+This configuration starts nginx with the root user and creates a server listening on port 4444 with the root set to the root path.
 The setting `autoindex on` let's us browse the directory contents.
 I added this just for convenience.
 
