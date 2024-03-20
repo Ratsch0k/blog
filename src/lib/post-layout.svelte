@@ -12,7 +12,6 @@
 	import TagChip from './tag-chip.svelte';
 	import { mousePosition } from './mouse-position';
 	import { onMount } from 'svelte';
-	import Copy from './icon/copy.svelte';
 	mermaid.initialize({ startOnLoad: true });
 
 	let article = null;
@@ -54,7 +53,7 @@
 			copyLabel.innerText = 'Copy';
 			copyElement.appendChild(copyLabel);
 
-			copyElement.addEventListener('click', (event) => {
+			copyElement.addEventListener('click', () => {
 				if (code) {
 					navigator.clipboard.writeText(code);
 					copyLabel.innerText = 'Copied';

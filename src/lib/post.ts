@@ -5,7 +5,7 @@ export const postTags = [
 	'series',
 	'reverse-engineering',
 	'guide',
-	'hackthebox',
+	'hackthebox'
 ] as const;
 export type PostTag = (typeof postTags)[number];
 
