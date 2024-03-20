@@ -58,16 +58,24 @@ code[class*='language-'] ::selection {
 /* Code blocks */
 pre[class*='language-'] {
 	padding: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 	margin: 0.5em 0;
 	overflow: auto;
 }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
+div[class='remark-code-container'] {
 	color: white;
 	background: #06130f;
 	border: 1px solid #0b231c;
 	border-radius: 0.5em;
+}
+
+div[class='remark-code-title'] {
+	border-bottom: 1px solid #0b231c;
+	font-weight: bold;
+	padding: 0.5em;
+	padding-left: 1em;
 }
 
 :not(pre) > code[class*='language-'] {
