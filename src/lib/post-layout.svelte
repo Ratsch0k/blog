@@ -415,9 +415,13 @@
 
 	:global(.remark-code-container) {
 		position: relative;
-		min-height: 100px;
-		align-items: center;
 		@apply my-2;
+	}
+
+	:global(pre[class*="language-"]) {
+		min-height: 80px;
+		display: flex;
+		align-items: center;
 	}
 
 	:global(.remark-code-container .remark-code-action) {
