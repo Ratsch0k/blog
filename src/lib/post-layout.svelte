@@ -373,6 +373,7 @@
 		@apply border-b;
 		@apply border-base-600;
 		@apply border-r;
+		@apply bg-base-800;
 	}
 
 	:global(tr td:first-child) {
@@ -414,7 +415,6 @@
 
 	:global(.remark-code-container) {
 		position: relative;
-		display: flex;
 		min-height: 100px;
 		align-items: center;
 		@apply my-2;
