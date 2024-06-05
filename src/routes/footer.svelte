@@ -1,7 +1,7 @@
 <div
 	class="bg-base-800 border-t border-t-base-700 p-8 flex flex-col items-center space-y-4 text-base-100"
 >
-	<div>© Copyright 2023 - Simon Lukas Kurz. All Rights Reserved</div>
+	<div>© Copyright 2024 - Simon Lukas Kurz. All Rights Reserved</div>
 
 	<div class="flex flex-col space-y-8 sm:flex-row sm:space-x-10 sm:space-y-0 justify-center">
 		<div class="flex flex-col space-y-2">
