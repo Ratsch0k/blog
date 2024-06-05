@@ -1,5 +1,5 @@
 ---
-title: 'Modding Future Cop: L.A.P.D - Introduction'
+title: 'Modding Future Cop: L.A.P.D. - Introduction'
 publishedAt: '2024-06-05'
 description: "Giant futuristic robots? Ridiculous weapons? Huge explosions? Count me in! Future Cop: L.A.P.D., a game published by EA Redwood Shores back in 1998, promises everything and more. As one of my childhood's favorite games, I've always wanted to revisit this old gem. I have now found an excuse for exactly this. I'm reverse engineering and modding the game. In this post, I introduce, motivate, and set goals for why and how I want to do that."
 tags:
@@ -8,7 +8,7 @@ tags:
   - development
 ---
 
-# Modding Future Cop: L.A.P.D
+# Modding Future Cop: L.A.P.D.
 
 In the mid-2000s, I had a computer with the demo of a game called **Future Cop: L.A.P.D**. Even though it was only a demo and I never got the chance to play the full game up until a few years ago, it was my favorite game from that time.
 
