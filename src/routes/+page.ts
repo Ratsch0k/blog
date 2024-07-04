@@ -4,7 +4,7 @@ import type { PageLoad } from './types';
 /**
  * List of top posts.
  */
-const TOP_POSTS = ['creating-a-personal-blog'];
+const TOP_POSTS = ['tile-anti-stalking-bypass', 'htb-broker'];
 
 /**
  * Loads the list of top posts.
