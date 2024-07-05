@@ -95,10 +95,6 @@
 		height: 100%;
 	}
 
-	dialog img {
-		height: min(90vh, 90vw);
-		width: min(90vh, 90vw);
-	}
 
 	.hidden {
 		display: none;
