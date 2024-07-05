@@ -16,7 +16,7 @@ This post describes one vulnerability that allows an attacker to send forged loc
 
 The API endpoint to upload location reports doesn't properly check the user's session, allowing an unauthenticated attacker to upload location reports for the Tile trackers of other users while pretending to be someone else.
 
-Using this vulnerability, an attacker could effectively make _Community Find_ unusable for all users on the platform.
+Using this vulnerability, an attacker could effectively make Tile's tracking network (called _Community Find_) unusable for all users on the platform.
 
 It is unclear to what extent the impersonation affects users.
 As the attacker is able to specify the client UUID of any user's client, the effect depends on how Tile further processes the client UUID.
@@ -118,9 +118,9 @@ HTTP/1.1 200 OK
 It is recommended to validate the user's session and reject the request if the session cookie is missing, invalid, or doesn't belong to the specified client UUID.
 If unauthenticated location reports should be possible, it is recommended to remove the client UUID from the request URL.
 However, these would only fix the impersonation issue.
-Fixing the issue of fake location reports requires changes to the entire _Community Find_ feature.
+Fixing the issue of fake location reports requires changes to the entire _Community Find_ network.
 
 # Timeline
 
-- 2024-03-13: Contacting Life 360's security contact through responsibledisclosure@life360.com
-- 2024-05-21: Contacting Tile's support asking for a status update
+- 2024-03-13: Contacted Life 360's security contact through responsibledisclosure@life360.com
+- 2024-05-21: Contacted Tile's support asking for a status update

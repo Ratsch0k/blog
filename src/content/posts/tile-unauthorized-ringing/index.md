@@ -15,7 +15,7 @@ This post describes one vulnerability that allows an attacker to ring the phone 
 
 # Vulnerability
 
-It is possible for any attacker to remotely ring the phone or Tile tracker of another user through Tile's MQTT server at prod-mqtt-8.tile-api.com because there is no access control in place.
+It is possible for an attacker to remotely ring the phone or Tile tracker of another user through Tile's MQTT server at prod-mqtt-8.tile-api.com because there is no access control in place.
 To exploit this vulnerability, the attacker must know the Tile UUID of the phone or Tile tracker they want to ring.
 However, the MQTT server additionally leaks this information, as described in the post [Tile - Data Leakage](../tile-data-leakage).
 The attacker can send a specially crafted message on the topic set to the Tile UUID of the targeted device to ring it.
@@ -46,5 +46,5 @@ Each user should also only be able to publish messages on the topics of their ow
 
 # Timeline
 
-- 2024-03-13: Contacting Life 360's security contact through responsibledisclosure@life360.com
-- 2024-05-21: Contacting Tile's support asking for a status update
+- 2024-03-13: Contacted Life 360's security contact through responsibledisclosure@life360.com
+- 2024-05-21: Contacted Tile's support asking for a status update

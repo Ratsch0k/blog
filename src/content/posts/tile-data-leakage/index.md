@@ -42,5 +42,5 @@ Each user should also only be able to access messages published on the topics of
 
 # Timeline
 
-- 2024-03-13: Contacting Life 360's security contact through responsibledisclosure@life360.com
-- 2024-05-21: Contacting Tile's support asking for a status update
+- 2024-03-13: Contacted Life 360's security contact through responsibledisclosure@life360.com
+- 2024-05-21: Contacted Tile's support asking for a status update
