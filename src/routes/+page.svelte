@@ -26,12 +26,14 @@
 		to series of posts about longer <i class="highlight">personal projects</i>.
 	</div>
 
-	<div class="max-w-3xl m-auto">
+	<div class="max-w-6xl m-auto">
 		<h3 class="text-3xl italic text-primary font-semibold mb-8">Read my top posts</h3>
 		<div class="w-full flex flex-col items-stretch">
-			<ul class="flex flex-row space-x-6 flex-wrap items-stretch mb-4">
+			<ul
+				class="flex flex-col md:flex-row space-y-6 space-x-0 md:space-y-0 md:space-x-6 flex-wrap items-stretch mb-4"
+			>
 				{#each data.topPosts as post}
-					<li class="flex-1"><PostCard {post} /></li>
+					<li class="flex-1 max-h-80"><PostCard {post} /></li>
 				{/each}
 			</ul>
 			<a
