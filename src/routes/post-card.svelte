@@ -163,11 +163,11 @@
 	href={post.slug}
 	class:is-hover={isHovering}
 	class:not-hover={!isHovering}
-	class="hover:no-underline group w-full hover:spot overflow-hidden transition-colors bg-base-700 block p-[1px] rounded-md relative z-10 hover:outline -outline-offset-1 hover:outline-1 hover:outline-base-600"
+	class="hover:no-underline group w-full h-full hover:spot overflow-hidden transition-colors bg-base-700 block p-[1px] rounded-md relative z-10 hover:outline -outline-offset-1 hover:outline-1 hover:outline-base-600"
 >
 	<div
 		bind:this={card}
-		class="bg-base-800 group-hover:bg-base-700/90 rounded-md p-4 flex justify-center items-start flex-col z-20 relative transition-colors"
+		class="bg-base-800 group-hover:bg-base-700/90 h-full rounded-md p-4 flex justify-start items-start flex-col z-20 relative transition-colors"
 	>
 		<span class="font-semibold italic text-2xl">
 			{#if !title.highlight}

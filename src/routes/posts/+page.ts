@@ -13,7 +13,7 @@ export const load: PageLoad = async () => {
 		})
 	);
 
-	posts.sort((a, b) => (a.publishedAt < b.publishedAt ? -1 : 1));
+	posts.sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1));
 
 	return { posts };
 };

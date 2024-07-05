@@ -311,7 +311,7 @@
 	})();
 </script>
 
-<main class="max-w-3xl m-auto px-4">
+<main class="max-w-3xl m-auto px-4 mb-8">
 	<h1 class="text-primary text-5xl italic font-semibold mb-12">All my posts</h1>
 
 	<div class="mb-8">
