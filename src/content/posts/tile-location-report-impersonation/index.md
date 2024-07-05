@@ -71,13 +71,13 @@ Content-Length: 978
 	]
 }
 ```
+
 The request demonstrates that it is possible to specify a valid client UUID when sending location reports without any authentication.
 Thus, it is possible to impersonate any client.
 Note that the request doesn't contain a session cookie.
 However, the server still accepts the request.
 Moreover, the attacker can specify any client UUID, and the server simply accepts it.
 Since the client UUID is linked to a specific account, the attacker can impersonate any user's client.
-
 
 The following request and response show that the location report sent in the request above was inserted into the device's location history.
 It's the location history of the device to which the advertisement referenced in the location report belongs.

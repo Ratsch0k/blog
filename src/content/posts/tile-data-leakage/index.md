@@ -24,11 +24,13 @@ The attacker will then also receive control status messages that contain user in
 This vulnerability was originally discovered by Weller et al. (https://dl.acm.org/doi/abs/10.1145/3395351.3399422).
 
 # Proof-of-Concept
+
 The following screenshot shows some of the data and messages that can be obtained with this vulnerability.
 
 ![Screenshot of some of the message sent by Tile's MQTT server.](./data-screenshot.png)
 
 In total, these messages leak the following information:
+
 - email address
 - device name
 - Tile UUID of the user's phone

@@ -6,7 +6,6 @@ tags:
   - security
 ---
 
-
 In my master's thesis, I analyzed the security and privacy of large portions of Tile's ecosystem.
 During this, I discovered several security vulnerabilities affecting various components and features.
 I reported these vulnerabilities to Tile, following [Google Project Zero's responsible disclosure policy](https://googleprojectzero.blogspot.com/2021/04/policy-and-disclosure-2021-edition.html).
@@ -29,6 +28,7 @@ The credentials are static and the same for every user.
 
 After connecting to the MQTT server, they must send a message similar to the following one to the topic of the targeted device.
 This topic is the device's Tile UUID.
+
 ```json
 {
   "client_ts": <timestamp_ms>,
@@ -37,6 +37,7 @@ This topic is the device's Tile UUID.
   "payload": {},
 }
 ```
+
 When the targeted device receives this message, it starts ringing.
 
 # Fix
